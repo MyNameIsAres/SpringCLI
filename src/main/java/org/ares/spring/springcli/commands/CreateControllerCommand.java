@@ -66,12 +66,7 @@ public class CreateControllerCommand implements Runnable, Buildable {
 
     @Override
     public void run() {
-        String template = createCrudIfModelExists();
-
-        TemplateBuilder templateBuilder = new TemplateBuilder();
-        Writer writer = templateBuilder.createFileWriter(PROPERTY_KEY, name);
-        templateBuilder.createTemplateSpring(writer, template, buildContext());
-        templateBuilder.flushFileWriter(writer);
+        new TemplateBuilder(PROPERTY_KEY, name, createCrudIfModelExists(), buildContext()).buildCommand();
     }
 
 

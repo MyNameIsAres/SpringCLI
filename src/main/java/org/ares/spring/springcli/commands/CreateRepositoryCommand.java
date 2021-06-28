@@ -8,10 +8,8 @@ import org.ares.spring.springcli.Buildable;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 
-import java.io.Writer;
-
 @Command(name = "make:repository")
-public class SpringCreateRepositoryCommand implements Runnable, Buildable {
+public class CreateRepositoryCommand implements Runnable, Buildable {
 
     @Parameters()
     String name;
@@ -26,7 +24,7 @@ public class SpringCreateRepositoryCommand implements Runnable, Buildable {
     public VelocityContext buildContext() {
         VelocityContext context = new VelocityContext();
         context.put("PACKAGE_NAME", PACKAGE_NAME);
-        context.put("CLASS_NAME", StringUtil.addCommandLabel(name));
+        context.put("CLASS_NAME", StringUtil.addRepositoryLabel(name));
         context.put("TYPE", "");
         context.put("ID", "");
 
@@ -35,10 +33,7 @@ public class SpringCreateRepositoryCommand implements Runnable, Buildable {
 
     @Override
     public void run() {
-        TemplateBuilder templateBuilder = new TemplateBuilder();
-        Writer writer = templateBuilder.createFileWriter(PROPERTY_KEY, name);
-        templateBuilder.createTemplate(writer, TEMPLATE, buildContext());
-        templateBuilder.flushFileWriter(writer);
+        new TemplateBuilder(PROPERTY_KEY, name, TEMPLATE, buildContext()).buildCommand();
     }
 
 }
