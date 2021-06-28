@@ -11,8 +11,7 @@ public class YamlHandler {
 
     final static String PREFIX = "src/main/java/";
 
-    // TODO: Make private when refactoring Spring commands
-    public Map<String, Object> fetchInformation() {
+    private Map<String, Object> fetchInformation() {
         InputStream inputStream;
         Map<String, Object> data;
         try {
@@ -59,26 +58,12 @@ public class YamlHandler {
         return  PREFIX + projectPath + key + "/" + name;
     }
 
-    public String getCommandGroupLocation(final String projectPath, final String key) {
-        verifyKey(key);
-        return PREFIX + projectPath + key + "/";
-    }
-
-
     public String getPackageName(String key) {
         String packageName = this.getProjectPath() + this.getKeyValue(key);
         packageName = packageName.replace("/", ".");
 
         return packageName;
     }
-
-    public String getGroupPackageName(String key, String packageName) {
-        String newPackageName = this.getProjectPath() + this.getKeyValue(key) + "." + packageName;
-        newPackageName = newPackageName.replace("/", ".");
-
-        return newPackageName;
-    }
-
 
     public String getSpringModelPath() {
         return "./src/main/java/" + getProjectPath() + getKeyValue("model_location") + "/";

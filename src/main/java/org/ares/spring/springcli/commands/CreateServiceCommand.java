@@ -8,8 +8,6 @@ import org.ares.spring.springcli.Buildable;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 
-import java.io.Writer;
-
 @Command(name = "make:service")
 public class CreateServiceCommand implements Runnable, Buildable {
 
@@ -34,16 +32,13 @@ public class CreateServiceCommand implements Runnable, Buildable {
     public VelocityContext buildContext() {
         VelocityContext context = new VelocityContext();
         context.put("PACKAGE_NAME", PACKAGE_NAME);
-        context.put("CLASS_NAME", StringUtil.addCommandLabel(name));
+        context.put("CLASS_NAME", StringUtil.addServiceLabel(name));
 
         return context;
     }
 
     @Override
     public void run() {
-        TemplateBuilder templateBuilder = new TemplateBuilder();
-        Writer writer = templateBuilder.createFileWriter(PROPERTY_KEY, name);
-        templateBuilder.createTemplate(writer, TEMPLATE, buildContext());
-        templateBuilder.flushFileWriter(writer);
+        new TemplateBuilder(PROPERTY_KEY, name, TEMPLATE, buildContext()).buildCommand();
     }
 }

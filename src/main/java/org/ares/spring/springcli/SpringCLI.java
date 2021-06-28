@@ -1,9 +1,9 @@
 package org.ares.spring.springcli;
 
 import org.ares.spring.springcli.commands.CreateControllerCommand;
+import org.ares.spring.springcli.commands.CreateRepositoryCommand;
 import picocli.CommandLine;
-
-import static picocli.CommandLine.*;
+import picocli.CommandLine.*;
 
 @Command(description = "Fancy a help message?", mixinStandardHelpOptions = true)
 public class SpringCLI implements Runnable {
@@ -32,6 +32,7 @@ public class SpringCLI implements Runnable {
     private static void createCommands(String[] args) {
         new CommandLine(new SpringCLI())
                 .addSubcommand(new CreateControllerCommand())
+                .addSubcommand(new CreateRepositoryCommand())
                 .execute(args);
     }
 
