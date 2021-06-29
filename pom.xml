@@ -52,7 +52,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>org.ares.foundation.cli.FoundationCLI</mainClass>
+                            <mainClass>org.ares.spring.springcli.SpringCLI</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

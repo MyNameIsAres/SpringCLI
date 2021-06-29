@@ -1,6 +1,7 @@
 package org.ares.spring.springcli;
 
 import org.ares.spring.springcli.commands.CreateControllerCommand;
+import org.ares.spring.springcli.commands.CreateModelCommand;
 import org.ares.spring.springcli.commands.CreateRepositoryCommand;
 import picocli.CommandLine;
 import picocli.CommandLine.*;
@@ -33,6 +34,7 @@ public class SpringCLI implements Runnable {
         new CommandLine(new SpringCLI())
                 .addSubcommand(new CreateControllerCommand())
                 .addSubcommand(new CreateRepositoryCommand())
+                .addSubcommand(new CreateModelCommand())
                 .execute(args);
     }
 

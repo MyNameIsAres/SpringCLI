@@ -2,16 +2,15 @@ package org.ares.spring.springcli.util.spring;
 
 public class SpringModelUtil {
 
-    private void handleArguments(String options) {
-        if (options.isEmpty()) {
-            return;
-        }
-
-        if (options.length() == 1) {
-            loadArgument(options);
+    // TODO: Better method names.
+    public void handleArguments(String options) {
+        if (options.equals("all")) {
+            // TODO: Load method that handles creating all
+            System.out.println("Creating all!");
         }
 
         if (options.length() > 1) {
+            System.out.println(3);
             String[] optionsArray = options.split("");
 
             for (String item : optionsArray) {
@@ -21,31 +20,23 @@ public class SpringModelUtil {
 
     }
 
-    // TODO: Convert to a switch
     private void loadArgument(String item) {
-        if (item.equals("a")) {
-            System.out.println("Logic to create all options..");
+        System.out.println(item + " test");
+
+        switch(item) {
+            case "c":
+                System.out.println("Controller options");
+                break;
+            case "s":
+                System.out.println("Service options");
+                break;
+            case "r":
+                System.out.println("Repository options");
+                break;
+            default:
+                System.out.println("WHAAAH");
         }
 
-        if (item.equals("c")) {
-            System.out.println("Logic to create controller..");
-//
-//            CreateControllerCommand springCreateControllerCommand = new CreateControllerCommand();
-//            springCreateControllerCommand.setName(name);
-//            springCreateControllerCommand.build();
-
-
-        }
-
-        if (item.equals("r")) {
-            System.out.println("Logic to create repository..");
-
-        }
-
-        if (item.equals("s")) {
-            System.out.println("Logic to create service..");
-
-        }
     }
 
 }
