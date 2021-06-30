@@ -36,7 +36,6 @@ public class CreateRepositoryCommand implements Runnable, Buildable {
 
     @Override
     public void run() {
-
         new TemplateBuilder(PROPERTY_KEY, StringUtil.addRepositoryLabel(name), TEMPLATE, buildContext()).buildCommand();
     }
 
