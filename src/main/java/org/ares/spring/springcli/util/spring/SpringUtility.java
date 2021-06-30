@@ -17,4 +17,8 @@ public class SpringUtility {
        return Files.exists(Paths.get(new YamlHandler().getSpringModelPath() + filterName(name) + ".java"));
     }
 
+    public static String getModelImport(final String name) {
+        return new YamlHandler().getPackageSpringModelPath() + name + ";";
+    }
+
 }
