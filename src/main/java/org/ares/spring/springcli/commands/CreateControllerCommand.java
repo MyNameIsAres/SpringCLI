@@ -43,7 +43,7 @@ public class CreateControllerCommand implements Runnable, Buildable {
         VelocityContext context = new VelocityContext();
         context.put("PACKAGE_NAME", PACKAGE_NAME);
         context.put("CLASS_NAME", name);
-        context.put("CONTROLLER_TYPE",  StringUtil.getValidControllerType(controllerType));
+//        context.put("CONTROLLER_TYPE",  StringUtil.getValidControllerType(controllerType));
 
         context.put("TYPE", StringUtil.getControllerName(name));
         context.put("LOWER_CASE_TYPE", StringUtil.getControllerName(name.toLowerCase()));

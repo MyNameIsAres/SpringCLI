@@ -10,7 +10,7 @@ public class StringUtil {
                 Spring String Util
      ******************************************/
 
-    public static String getControllerName(String name) {
+    public static String getControllerName(final String name) {
         if (!name.contains("Controller")) {
             return name;
         }
@@ -20,26 +20,36 @@ public class StringUtil {
                 .replace("]", "");
     }
 
-    public static String addControllerLabel(String className) {
+    public static String addControllerLabel(final String className) {
         return !className.contains("Controller") ? className + "Controller" : className;
     }
 
-    public static String addRepositoryLabel(String className) {
+    public static String getRepositoryName(final String name) {
+        if (!name.contains("Repository")) {
+            return name;
+        }
+
+        return Arrays.toString(name.split("Repository"))
+                .replace("[", "")
+                .replace("]", "");
+    }
+
+    public static String addRepositoryLabel(final String className) {
         return !className.contains("Repository") ? className + "Repository" : className;
     }
 
-    public static String addServiceLabel(String className) {
+    public static String addServiceLabel(final String className) {
         return !className.contains("Service") ? className + "Service" : className;
     }
 
-    // The warning is strange as it works fine.
-    public static String getValidControllerType(String controllerType) {
-        if (!controllerType.equals("Rest") || !controllerType.equals("RestController") || !controllerType.equals("Controller")) {
-            return "RestController";
-        }
-
-        return controllerType;
-    }
+//    // The warning is strange as it works fine.
+//    public static String getValidControllerType(String controllerType) {
+//        if (!controllerType.equals("Rest") || !controllerType.equals("RestController") || !controllerType.equals("Controller")) {
+//            return "RestController";
+//        }
+//
+//        return controllerType;
+//    }
 
 
 
